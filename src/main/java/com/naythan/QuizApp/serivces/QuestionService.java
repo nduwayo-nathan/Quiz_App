@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -17,5 +18,9 @@ public class QuestionService {
 
     public List<Question> getAllQuestions(){
         return questionDao.findAll();
+    }
+
+    public Optional<Question> getQuestionById(Integer id){
+        return questionDao.findById(id);
     }
 }
