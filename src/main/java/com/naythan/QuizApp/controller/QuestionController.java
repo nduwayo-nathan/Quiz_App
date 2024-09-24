@@ -25,5 +25,13 @@ public class QuestionController {
     public Optional<Question> getQuestionById(@PathVariable Integer id){
        return questionService.getQuestionById(id);
     }
+    @PostMapping("/add")
+    public String createQuestion(@RequestBody Question question){
+       return questionService.createQuestion(question);
+    }
+    @DeleteMapping("/{id}")
+    public String deleteQuestion(@PathVariable Integer id){
+       return questionService.deleteQuestion(id);
+    }
 
 }

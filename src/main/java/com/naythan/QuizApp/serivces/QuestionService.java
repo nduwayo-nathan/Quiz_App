@@ -23,4 +23,16 @@ public class QuestionService {
     public Optional<Question> getQuestionById(Integer id){
         return questionDao.findById(id);
     }
+    public String createQuestion(Question question){
+
+        questionDao.save(question);
+        Integer id= question.getId();
+        return "successfully created:\n"+questionDao.findById(id);
+
+    }
+
+    public  String deleteQuestion(Integer id){
+        questionDao.deleteById(id);
+        return "deleted";
+    }
 }
