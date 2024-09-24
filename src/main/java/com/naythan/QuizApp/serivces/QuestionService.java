@@ -35,4 +35,19 @@ public class QuestionService {
         questionDao.deleteById(id);
         return "deleted";
     }
+    public String updateQuestion(Integer id ,Question question){
+        Optional<Question> qnOption = questionDao.findById(id);
+
+        Question oldQn = qnOption.get();
+       oldQn.setQuestion(question.getQuestion());
+       oldQn.setOption_a(question.getOption_a());
+       oldQn.setOption_b(question.getOption_b());
+       oldQn.setOption_c(question.getOption_d());
+       oldQn.setCorrect_Option(question.getCorrect_Option());
+       oldQn.setCategory(question.getCategory());
+
+      questionDao.save(oldQn);
+
+      return "Updated";
+    }
 }

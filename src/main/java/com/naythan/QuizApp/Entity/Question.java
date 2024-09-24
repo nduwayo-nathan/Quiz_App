@@ -10,7 +10,7 @@ import lombok.RequiredArgsConstructor;
 @Table(name = "questions")
 public class Question {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer id;
     private String question;
     private  String option_a;
