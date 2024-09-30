@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 @Data
 @AllArgsConstructor
 public class QuestionWrapper {
-    @Id
     public Integer id;
     private String question;
     private  String option_a;

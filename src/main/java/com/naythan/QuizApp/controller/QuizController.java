@@ -2,6 +2,7 @@ package com.naythan.QuizApp.controller;
 
 import com.naythan.QuizApp.Entity.QuestionWrapper;
 import com.naythan.QuizApp.Entity.Quiz;
+import com.naythan.QuizApp.Entity.Response;
 import com.naythan.QuizApp.serivces.QuizService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -22,5 +23,9 @@ public class QuizController {
     @GetMapping("/{id}")
     public List<QuestionWrapper> getQuiz(@PathVariable Integer id){
       return   quizService.getQuiz(id);
+    }
+    @GetMapping("/result/{id}")
+    public String getResult(@PathVariable Integer id,@RequestBody List<Response> response){
+        return quizService.getResult(id,response);
     }
 }

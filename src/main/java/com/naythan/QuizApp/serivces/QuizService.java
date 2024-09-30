@@ -3,6 +3,7 @@ package com.naythan.QuizApp.serivces;
 import com.naythan.QuizApp.Entity.Question;
 import com.naythan.QuizApp.Entity.QuestionWrapper;
 import com.naythan.QuizApp.Entity.Quiz;
+import com.naythan.QuizApp.Entity.Response;
 import com.naythan.QuizApp.dao.QuestionDao;
 import com.naythan.QuizApp.dao.QuizDao;
 import lombok.RequiredArgsConstructor;
@@ -46,6 +47,33 @@ public class QuizService {
 
 
     return  qn_user;
+    }
+
+
+    public String getResult(Integer id, List<Response> responce){
+
+        Quiz quiz= quizDao.findById(id).get();
+
+        List<Question> questions= quiz.getQuestions();
+
+        int i=0;
+        int result=0;
+
+
+
+
+
+        for (Response r:responce){
+
+            if (r.getResponse().equals(questions.get(i).getCorrect_Option())){
+                result++;
+            }
+            i++;
+        }
+
+        return "The result is "+result+"/"+questions.stream().count();
+
+
     }
 
 }
