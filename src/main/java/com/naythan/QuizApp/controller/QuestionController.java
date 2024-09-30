@@ -1,6 +1,7 @@
 package com.naythan.QuizApp.controller;
 
 
+import com.naythan.QuizApp.Entity.ApiResponce;
 import com.naythan.QuizApp.Entity.Question;
 import com.naythan.QuizApp.serivces.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,23 +19,25 @@ public class QuestionController {
     QuestionService questionService;
 
     @GetMapping("/all")
-    public List<Question> getAllQuestions(){
+    public ResponseEntity<ApiResponce<List<Question>>> getAllQuestions(){
         return questionService.getAllQuestions();
     }
+
     @GetMapping("/{id}")
-    public Optional<Question> getQuestionById(@PathVariable Integer id){
+    public ResponseEntity<ApiResponce<Question>> getQuestionById(@PathVariable Integer id){
        return questionService.getQuestionById(id);
     }
+
     @PostMapping("/add")
-    public String createQuestion(@RequestBody Question question){
+    public ResponseEntity<String> createQuestion(@RequestBody Question question){
        return questionService.createQuestion(question);
     }
     @DeleteMapping("/{id}")
-    public String deleteQuestion(@PathVariable Integer id){
+    public ResponseEntity<String> deleteQuestion(@PathVariable Integer id){
        return questionService.deleteQuestion(id);
     }
     @PutMapping("/update/{id}")
-    public String updateQuestion(@PathVariable Integer id ,@RequestBody Question question){
+    public ResponseEntity<String> updateQuestion(@PathVariable Integer id ,@RequestBody Question question){
         return  questionService.updateQuestion(id,question);
     }
 
