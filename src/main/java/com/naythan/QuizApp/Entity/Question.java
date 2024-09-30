@@ -1,11 +1,12 @@
 package com.naythan.QuizApp.Entity;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
 @Entity
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Data
 @Table(name = "questions")
 public class Question {
